@@ -1,13 +1,12 @@
 {
     "Index": {
-      "title": "Hello world!"
+      "title": "Namaskar Sansar!"
     },
     "NotFoundPage": {
-      "title": "Page Not Found"
+      "title": "Page Vetiyena"
     },
     "LocaleSwitcher": {
       "label": "Change language",
       "locale": "{locale, select, np {Nepali} en {English} rnp {Romanized Nepali} other {unknown}}"
-    },
-    "PageLayout":{}
+    }
   }

@@ -4,5 +4,9 @@
     },
     "NotFoundPage": {
       "title": "पृष्ठ फेला परेन"
+    },
+    "LocaleSwitcher": {
+      "label": "भाषा परिवर्तन गर्नुहोस्",
+      "locale": "{locale, select, np {नेपाली} en {अंग्रेजी} rnp {रोमनाईज्ड नेपाली} other {unknown}}"
     }
   }

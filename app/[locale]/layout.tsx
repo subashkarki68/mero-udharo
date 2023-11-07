@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { useLocale } from "next-intl";
+import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
 import { notFound, redirect } from "next/navigation";
 import "./globals.css";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
+
+type LocaleLayoutProps = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
 
 export const metadata: Metadata = {
   title: "Mero Udharo App",
@@ -19,14 +25,9 @@ export const metadata: Metadata = {
 //   );
 // }
 
-export default function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const locales = useLocale();
+  const messages = useMessages();
   const { locale } = params;
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) {
@@ -37,7 +38,13 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body>
+        {" "}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <LocaleSwitcher />
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

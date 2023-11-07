@@ -16,7 +16,7 @@ export default function Home() {
         Switch to English
       </Link>
       <br></br>
-      <Link locale='eNP' href='/'>
+      <Link locale='rnp' href='/'>
         Switch to Romanized Nepali
       </Link>
     </>
