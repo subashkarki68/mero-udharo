@@ -7,6 +7,6 @@
     },
     "LocaleSwitcher": {
       "label": "भाषा परिवर्तन गर्नुहोस्",
-      "locale": "{locale, select, np {नेपाली} en {अंग्रेजी} rnp {रोमनाईज्ड नेपाली} other {unknown}}"
+      "locale": "{locale, select, ne {नेपाली} en {अंग्रेजी} rn {रोमनाईज्ड नेपाली} other {unknown}}"
     }
   }

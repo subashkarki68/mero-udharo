@@ -7,6 +7,6 @@
     },
     "LocaleSwitcher": {
       "label": "Change language",
-      "locale": "{locale, select, np {Nepali} en {English} rnp {Romanized Nepali} other {unknown}}"
+      "locale": "{locale, select, ne {Nepali} en {English} rn {Romanized Nepali} other {unknown}}"
     }
   }

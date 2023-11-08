@@ -18,7 +18,6 @@ export default function LocaleSwitcher() {
       router.replace(pathname, { locale: nextLocale });
     });
   }
-
   return (
     <label
       className={clsx(
@@ -33,7 +32,7 @@ export default function LocaleSwitcher() {
         disabled={isPending}
         onChange={onSelectChange}
       >
-        {["np", "en", "rnp"].map((cur) => (
+        {["ne", "en", "rn"].map((cur) => (
           <option key={cur} value={cur}>
             {t("locale", { locale: cur })}
           </option>

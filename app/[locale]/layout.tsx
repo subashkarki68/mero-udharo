@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif_Devanagari, Poppins } from "next/font/google";
-import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
-import { notFound, redirect } from "next/navigation";
+import { useLocale, useMessages } from "next-intl";
+import { notFound } from "next/navigation";
 import "./globals.css";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
 import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,18 +31,19 @@ export const metadata: Metadata = {
 // }
 
 export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const locales = useLocale();
+  const locales = ["en", "ne", "rn"];
   const messages = useMessages();
   const { locale } = params;
+
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) {
+  if (!locales.includes(locale as any)) {
     console.log("Page not found, redirecting to not-found");
     notFound();
   }
 
   return (
     <html lang={locale}>
-      <body className={locale === "np" ? fontForNepali : defaultFont}>
+      <body className={locale === "ne" ? fontForNepali : defaultFont}>
         <Navbar />
         {children}
       </body>

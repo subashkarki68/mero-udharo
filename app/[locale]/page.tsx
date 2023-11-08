@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <h1>{t("title")}</h1>
-      <Link className='btn btn-primary text-white' locale='np' href='/'>
+      <Link className='btn btn-primary text-white' locale='ne' href='/'>
         Switch to Nepali
       </Link>
       <br></br>
@@ -15,7 +15,7 @@ export default function Home() {
         Switch to English
       </Link>
       <br></br>
-      <Link locale='rnp' href='/'>
+      <Link locale='rn' href='/'>
         Switch to Romanized Nepali
       </Link>
     </>
