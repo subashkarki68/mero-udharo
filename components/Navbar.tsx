@@ -1,8 +1,7 @@
 import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
 import React from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
-import Link from "next/link";
-
+import { Link } from "@/navigation";
 export default function Navbar() {
   const locale = useLocale();
   const messages = useMessages();
