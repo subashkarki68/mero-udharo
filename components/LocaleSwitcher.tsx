@@ -15,7 +15,6 @@ export default function LocaleSwitcher() {
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value;
     startTransition(() => {
-      console.log(locale);
       router.replace(pathname, { locale: nextLocale });
     });
   }
@@ -29,7 +28,7 @@ export default function LocaleSwitcher() {
     >
       <p className='sr-only'>{t("label")}</p>
       <select
-        className='inline-flex appearance-none bg-transparent py-3 pl-2 pr-6'
+        className='select select-primary w-full max-w-[14rem]'
         defaultValue={locale}
         disabled={isPending}
         onChange={onSelectChange}
@@ -40,7 +39,6 @@ export default function LocaleSwitcher() {
           </option>
         ))}
       </select>
-      <span className='pointer-events-none absolute right-2 top-[8px]'>⌄</span>
     </label>
   );
 }

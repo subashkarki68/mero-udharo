@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Serif_Devanagari, Poppins } from "next/font/google";
 import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
 import { notFound, redirect } from "next/navigation";
 import "./globals.css";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["devanagari"], weight: ["400"] });
+const notoSerifDevnagari = Noto_Serif_Devanagari({ subsets: ["devanagari"] });
+
+const defaultFont = inter.className;
+const fontForNepali = notoSerifDevnagari.className;
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
@@ -33,17 +39,13 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
   if (!locales.includes(locale)) {
     console.log("Page not found, redirecting to not-found");
     notFound();
-    // redirect("/subash");
   }
 
   return (
     <html lang={locale}>
-      <body>
-        {" "}
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <LocaleSwitcher />
-          {children}
-        </NextIntlClientProvider>
+      <body className={locale === "np" ? fontForNepali : defaultFont}>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

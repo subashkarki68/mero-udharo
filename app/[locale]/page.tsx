@@ -4,11 +4,10 @@ import { Link } from "@/navigation";
 export default function Home() {
   const t = useTranslations("Index");
   const locale = useLocale;
-  console.log(locale);
   return (
     <>
       <h1>{t("title")}</h1>
-      <Link locale='np' href='/'>
+      <Link className='btn btn-primary text-white' locale='np' href='/'>
         Switch to Nepali
       </Link>
       <br></br>
