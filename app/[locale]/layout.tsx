@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 // }
 
 export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const locales = ["en", "ne", "rn"];
+  const locales = ["ne", "en", "rn"];
   const messages = useMessages();
   const { locale } = params;
 
