@@ -2,12 +2,16 @@
     "Index": {
       "title": "Hello world!"
     },
+    "Common": {
+      "signin": "Sign in",
+      "logout": "Logout",
+      "signup": "Sign up"
+    },
     "NotFoundPage": {
       "title": "Page Not Found"
     },
     "LocaleSwitcher": {
       "label": "Change language",
       "locale": "{locale, select, ne {Nepali} en {English} rn {Romanized Nepali} other {unknown}}"
-    },
-    "PageLayout":{}
+    }
   }

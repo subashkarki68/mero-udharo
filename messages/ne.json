@@ -2,6 +2,11 @@
     "Index": {
       "title": "नमस्कार संसार!"
     },
+    "Common": {
+      "signin": "साइन इन",
+      "logout": "लगआउट",
+      "signup": "साइन अप"
+    },
     "NotFoundPage": {
       "title": "पृष्ठ फेला परेन"
     },

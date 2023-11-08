@@ -5,6 +5,11 @@
     "NotFoundPage": {
       "title": "Page Vetiyena"
     },
+    "Common": {
+      "signin": "Sign in",
+      "logout": "Logout",
+      "signup": "Sign up"
+    },
     "LocaleSwitcher": {
       "label": "Change language",
       "locale": "{locale, select, ne {Nepali} en {English} rn {Romanized Nepali} other {unknown}}"

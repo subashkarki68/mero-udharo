@@ -1,6 +1,7 @@
+import { authMiddleware } from "@clerk/nextjs";
 import createMiddleware from "next-intl/middleware";
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   // A list of all locales that are supported
   locales: ["ne", "en", "rn"],
 
@@ -10,11 +11,16 @@ export default createMiddleware({
   localePrefix: "as-needed",
 });
 
+export default authMiddleware({
+  beforeAuth: (req) => {
+    // Execute next-intl middleware before Clerk's auth middleware
+    return intlMiddleware(req);
+  },
+
+  // Ensure that locale specific sign-in pages are public
+  publicRoutes: ["/", "/:locale", "/:locale/signin", "/:locale/signup"],
+});
+
 export const config = {
-  matcher: [
-    // Match all pathnames except for
-    // - … if they start with `/api`, `/_next` or `/_vercel`
-    // - … the ones containing a dot (e.g. `favicon.ico`)
-    "/((?!api|_next|_vercel|.*\\..*).*)",
-  ],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

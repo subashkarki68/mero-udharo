@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif_Devanagari, Poppins } from "next/font/google";
-import { useLocale, useMessages } from "next-intl";
 import { notFound } from "next/navigation";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ne, rn } from "@/lib/clerkLocalization/customLocalization";
+import { enUS } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["devanagari"], weight: ["400"] });
@@ -32,7 +34,6 @@ export const metadata: Metadata = {
 
 export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const locales = ["ne", "en", "rn"];
-  const messages = useMessages();
   const { locale } = params;
 
   // Validate that the incoming `locale` parameter is valid
@@ -42,11 +43,15 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
   }
 
   return (
-    <html lang={locale}>
-      <body className={locale === "ne" ? fontForNepali : defaultFont}>
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      localization={locale === "ne" ? ne : locale === "rn" ? rn : enUS}
+    >
+      <html lang={locale}>
+        <body className={locale === "ne" ? fontForNepali : defaultFont}>
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

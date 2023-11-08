@@ -1,10 +1,18 @@
-import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
+import {
+  NextIntlClientProvider,
+  useLocale,
+  useMessages,
+  useTranslations,
+} from "next-intl";
 import React from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Link } from "@/navigation";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 export default function Navbar() {
   const locale = useLocale();
   const messages = useMessages();
+  const t = useTranslations("Common");
+
   return (
     <div className='navbar bg-base-100'>
       <div className='navbar-start'>
@@ -76,6 +84,15 @@ export default function Navbar() {
         </ul>
       </div>
       <div className='navbar-end'>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <Link href='/signin' className='btn btn-primary text-white'>
+            {t("signin")}
+          </Link>
+        </SignedOut>
+        <span className='mr-4'></span>
         <NextIntlClientProvider
           locale={locale}
           messages={messages}
