@@ -16,24 +16,8 @@ const config: Config = {
     },
   },
   daisyui: {
-    themes: [
-      {
-        lightTheme: {
-          primary: "#f4aa3a",
-          secondary: "#f4f4a1",
-          accent: "#1be885",
-          neutral: "#272136",
-          "base-100": "#ffffff",
-          info: "#778ad4",
-          success: "#23b893",
-          warning: "#f79926",
-          error: "#ea535a",
-          body: {
-            "background-color": "#fff",
-          },
-        },
-      },
-    ],
+    themes: ["garden", "dark"],
+    //"corporate", "retro" "black", "cupcake", "bumblebee", "emerald", "light", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "dark", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter",
   },
 
   plugins: [require("daisyui")],

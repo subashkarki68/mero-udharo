@@ -7,7 +7,7 @@ import {
 import React from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Link } from "@/navigation";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 export default function Navbar() {
   const locale = useLocale();
   const messages = useMessages();
@@ -88,9 +88,12 @@ export default function Navbar() {
           <UserButton />
         </SignedIn>
         <SignedOut>
-          <Link href='/signin' className='btn btn-primary text-white'>
+          <SignInButton>
+            <span className='btn btn-primary text-white'>{t("signin")}</span>
+          </SignInButton>
+          {/* <Link href='/signin' className='btn btn-primary text-white'>
             {t("signin")}
-          </Link>
+          </Link> */}
         </SignedOut>
         <span className='mr-4'></span>
         <NextIntlClientProvider

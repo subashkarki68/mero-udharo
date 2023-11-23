@@ -1,19 +1,63 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-model Accounts {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+generator client {
+  provider = "prisma-client-js"
 }
 
-model Users {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  email    String @unique
-  password String
-  username String @unique
+enum orderStatus {
+  Paid
+  Pending
+}
+
+model Shopkeeper {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  clerkId   String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+  Orders    Order[]
+
+  @@map("shopkeepers")
+}
+
+model Customer {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  clerkId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  credits   Int
+  Orders    Order[]
+
+  @@map("customers")
+}
+
+model Product {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  price        Float
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  shopkeeper   Shopkeeper @relation(fields: [shopkeeperId], references: [id])
+  shopkeeperId String     @db.ObjectId
+  Orders       Order[]
+
+  @@map("products")
+}
+
+model Order {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  status       orderStatus @default(Pending)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  customer     Customer    @relation(fields: [customerId], references: [id])
+  customerId   String      @db.ObjectId
+  shopkeeperId String      @db.ObjectId
+  shopkeeper   Shopkeeper  @relation(fields: [shopkeeperId], references: [id])
+  products     Product?    @relation(fields: [productId], references: [id])
+  productId    String?     @db.ObjectId
+
+  @@map("orders")
 }

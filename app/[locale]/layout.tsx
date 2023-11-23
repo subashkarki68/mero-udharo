@@ -6,10 +6,14 @@ import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ne, rn } from "@/lib/clerkLocalization/customLocalization";
 import { enUS } from "@clerk/localizations";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["devanagari"], weight: ["400"] });
-const notoSerifDevnagari = Noto_Serif_Devanagari({ subsets: ["devanagari"] });
+const notoSerifDevnagari = Noto_Serif_Devanagari({
+  subsets: ["devanagari"],
+  weight: ["400"],
+});
 
 const defaultFont = inter.className;
 const fontForNepali = notoSerifDevnagari.className;
